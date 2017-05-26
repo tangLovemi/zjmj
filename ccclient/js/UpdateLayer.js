@@ -74,8 +74,6 @@
             jsclient.initGameNet();
 
 
-
-
             return true;
         }
     });

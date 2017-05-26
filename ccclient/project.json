@@ -12,11 +12,16 @@
     "modules" : ["cocos2d", "cocostudio"],
 
     "jsList" : [
+        "src/Resources.js",
         "src/pomelo/index.js",
-        "src/Gamenet.js",
+        "src/tools/index.js",
+        "src/animation/index.js",
+        "src/config/index.js",
+        "src/event/index.js",
+        "src/manager/index.js",
+        "src/protobuf/index.js",
         "src/Result.js",
         "src/EventMgr.js",
-		"src/Resources.js",
         "src/Tools.js",
         "src/GameScene.js",
         "src/App.js",

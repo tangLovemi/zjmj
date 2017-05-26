@@ -21,16 +21,13 @@ function testXhr(){
     {
         if (xhr.readyState == 4 && xhr.status == 200)
         {
-            Log("-------------------1");
         }
         else
         {
-            Log("-------------------2");
         }
     };
     xhr.onerror = function (event)
     {
-        Log("-------------------3");
     };
     xhr.send();
 }
@@ -83,6 +80,9 @@ function testLogin(){
                 if (rtn.result == ZJHCode.Success) {
                     if(code){
                         sys.localStorage.setItem("loginData", JSON.stringify(loginData));
+
+                        jsclient.data = rtn;
+                        console.log(typeof jsclient.data.pinfo.uid);
                     }
                 }
                 else if(rtn.result == ZJHCode.playerNotFound) {
