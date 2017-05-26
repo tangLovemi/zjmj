@@ -1,0 +1,8 @@
+{
+"packageUrl":       "http://sources1.happyplaygame.net/ahmj/{version}/",
+"remoteManifestUrl":"http://sources1.happyplaygame.net/ahmj/{version}/project.manifest",
+"version":"{version}",
+"engineVersion":"3.0 beta",
+"assets":{
+   {zip}
+}}

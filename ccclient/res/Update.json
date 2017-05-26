@@ -1,0 +1,599 @@
+{
+  "ID": "250640a5-e928-4b92-8392-8b0aa9aec5c3",
+  "Version": "2.3.4",
+  "Name": "Update",
+  "Content": {
+    "Content": {
+      "Animation": {
+        "Duration": 0,
+        "Speed": 1.0,
+        "Timelines": [],
+        "ctype": "TimelineActionData"
+      },
+      "AnimationList": [],
+      "ObjectData": {
+        "Tag": 3,
+        "Children": [
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "bg/home_bg.png",
+              "Plist": ""
+            },
+            "Scale9OriginX": 422,
+            "Scale9OriginY": 237,
+            "Scale9Width": 436,
+            "Scale9Height": 246,
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 640.0,
+              "Y": 360.0
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.5,
+              "Y": 0.5
+            },
+            "PreSize": {
+              "X": 1.0,
+              "Y": 1.0
+            },
+            "Tag": 7,
+            "ActionTag": 588231318,
+            "Size": {
+              "X": 1280.0,
+              "Y": 720.0
+            },
+            "Name": "back",
+            "ctype": "ImageViewObjectData"
+          },
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "login/oe_logo_big.png",
+              "Plist": ""
+            },
+            "Scale9OriginX": 189,
+            "Scale9OriginY": 61,
+            "Scale9Width": 433,
+            "Scale9Height": 199,
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 640.0,
+              "Y": 546.0
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.5,
+              "Y": 0.7583
+            },
+            "PreSize": {
+              "X": 0.6336,
+              "Y": 0.4458
+            },
+            "LeftMargin": 234.5,
+            "RightMargin": 234.5,
+            "TopMargin": 13.5,
+            "BottomMargin": 385.5,
+            "Tag": 619,
+            "ActionTag": -46731290,
+            "Size": {
+              "X": 811.0,
+              "Y": 321.0
+            },
+            "Name": "titleBg",
+            "ctype": "ImageViewObjectData"
+          },
+          {
+            "ClipAble": false,
+            "BackColorAlpha": 0,
+            "ComboBoxIndex": 1,
+            "SingleColor": {
+              "R": 150,
+              "G": 200
+            },
+            "FirstColor": {
+              "R": 150,
+              "G": 200
+            },
+            "EndColor": {},
+            "ColorVector": {
+              "ScaleY": 1.0
+            },
+            "Scale9Width": 1,
+            "Scale9Height": 1,
+            "TouchEnable": true,
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 640.0,
+              "Y": 216.0
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PositionPercentXEnabled": true,
+            "PositionPercentYEnabled": true,
+            "PrePosition": {
+              "X": 0.5,
+              "Y": 0.3
+            },
+            "PreSize": {
+              "X": 0.4688,
+              "Y": 0.1389
+            },
+            "LeftMargin": 340.0,
+            "RightMargin": 340.0,
+            "TopMargin": 454.0,
+            "BottomMargin": 166.0,
+            "Tag": 9,
+            "Children": [
+              {
+                "FileData": {
+                  "Type": "Normal",
+                  "Path": "update/update_loadlabel.png",
+                  "Plist": ""
+                },
+                "Scale9OriginX": 66,
+                "Scale9OriginY": 8,
+                "Scale9Width": 68,
+                "Scale9Height": 14,
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 298.38,
+                  "Y": 104.69
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PositionPercentXEnabled": true,
+                "PositionPercentYEnabled": true,
+                "PrePosition": {
+                  "X": 0.4973,
+                  "Y": 1.0469
+                },
+                "PreSize": {
+                  "X": 0.3333,
+                  "Y": 0.3
+                },
+                "LeftMargin": 198.38,
+                "RightMargin": 201.62,
+                "TopMargin": -19.69,
+                "BottomMargin": 89.69,
+                "Tag": 194,
+                "ActionTag": -1820957360,
+                "Size": {
+                  "X": 200.0,
+                  "Y": 30.0
+                },
+                "Name": "load",
+                "ctype": "ImageViewObjectData"
+              },
+              {
+                "FileData": {
+                  "Type": "Normal",
+                  "Path": "update/update_loading_bar_bg.png",
+                  "Plist": ""
+                },
+                "Scale9OriginX": 15,
+                "Scale9OriginY": 16,
+                "Scale9Width": 622,
+                "Scale9Height": 5,
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 300.0,
+                  "Y": 50.0
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PositionPercentXEnabled": true,
+                "PositionPercentYEnabled": true,
+                "PrePosition": {
+                  "X": 0.5,
+                  "Y": 0.5
+                },
+                "PreSize": {
+                  "X": 1.0867,
+                  "Y": 0.37
+                },
+                "LeftMargin": -26.0,
+                "RightMargin": -26.0,
+                "TopMargin": 31.5,
+                "BottomMargin": 31.5,
+                "Tag": 635,
+                "ActionTag": -1404380911,
+                "Size": {
+                  "X": 652.0,
+                  "Y": 37.0
+                },
+                "Name": "barBg",
+                "ctype": "ImageViewObjectData"
+              },
+              {
+                "ProgressInfo": 50,
+                "ImageFileData": {
+                  "Type": "Normal",
+                  "Path": "update/update_loading_bar.png",
+                  "Plist": ""
+                },
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 300.0,
+                  "Y": 50.0
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PositionPercentXEnabled": true,
+                "PositionPercentYEnabled": true,
+                "PrePosition": {
+                  "X": 0.5,
+                  "Y": 0.5
+                },
+                "PercentWidthEnable": true,
+                "PercentHeightEnable": true,
+                "PercentWidthEnabled": true,
+                "PercentHeightEnabled": true,
+                "PreSize": {
+                  "X": 1.0867,
+                  "Y": 0.37
+                },
+                "LeftMargin": -26.01,
+                "RightMargin": -26.01,
+                "TopMargin": 31.5,
+                "BottomMargin": 31.5,
+                "Tag": 638,
+                "Children": [
+                  {
+                    "FileData": {
+                      "Type": "Normal",
+                      "Path": "update/update_bar.png",
+                      "Plist": ""
+                    },
+                    "Scale9OriginX": 12,
+                    "Scale9OriginY": 13,
+                    "Scale9Width": 105,
+                    "Scale9Height": 103,
+                    "AnchorPoint": {
+                      "ScaleX": 0.5,
+                      "ScaleY": 0.5
+                    },
+                    "Position": {
+                      "X": 221.6868,
+                      "Y": 18.5
+                    },
+                    "Scale": {
+                      "ScaleX": 1.0,
+                      "ScaleY": 1.0
+                    },
+                    "CColor": {},
+                    "IconVisible": false,
+                    "PositionPercentXEnabled": true,
+                    "PositionPercentYEnabled": true,
+                    "PrePosition": {
+                      "X": 0.34,
+                      "Y": 0.5
+                    },
+                    "PreSize": {
+                      "X": 0.1978,
+                      "Y": 3.4865
+                    },
+                    "LeftMargin": 157.1868,
+                    "RightMargin": 365.8331,
+                    "TopMargin": -46.0,
+                    "BottomMargin": -46.0,
+                    "Tag": 640,
+                    "ActionTag": -1993996878,
+                    "Size": {
+                      "X": 129.0,
+                      "Y": 129.0
+                    },
+                    "Name": "barHead",
+                    "ctype": "ImageViewObjectData"
+                  }
+                ],
+                "ActionTag": 136727801,
+                "Size": {
+                  "X": 652.02,
+                  "Y": 37.0
+                },
+                "Name": "bar",
+                "ctype": "LoadingBarObjectData"
+              }
+            ],
+            "ActionTag": 579871924,
+            "Size": {
+              "X": 600.0,
+              "Y": 100.0
+            },
+            "Name": "loadPanel",
+            "ctype": "PanelObjectData"
+          },
+          {
+            "FontSize": 14,
+            "ButtonText": "",
+            "TextColor": {
+              "R": 65,
+              "G": 65,
+              "B": 70
+            },
+            "DisabledFileData": {
+              "Type": "Normal",
+              "Path": "login/bnt_ykland_n.png",
+              "Plist": ""
+            },
+            "PressedFileData": {
+              "Type": "Normal",
+              "Path": "login/bnt_ykland_d.png",
+              "Plist": ""
+            },
+            "NormalFileData": {
+              "Type": "Normal",
+              "Path": "login/bnt_ykland_n.png",
+              "Plist": ""
+            },
+            "Scale9Enable": true,
+            "Scale9OriginX": 15,
+            "Scale9OriginY": 11,
+            "Scale9Width": 287,
+            "Scale9Height": 100,
+            "OutlineColor": {
+              "G": 0,
+              "B": 0
+            },
+            "ShadowColor": {
+              "R": 110,
+              "G": 110,
+              "B": 110
+            },
+            "ShadowOffsetX": 2.0,
+            "ShadowOffsetY": -2.0,
+            "TouchEnable": true,
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 266.5028,
+              "Y": 357.0592
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.2082,
+              "Y": 0.4959
+            },
+            "PreSize": {
+              "X": 0.2477,
+              "Y": 0.1694
+            },
+            "LeftMargin": 108.0028,
+            "RightMargin": 854.9972,
+            "TopMargin": 301.9408,
+            "BottomMargin": 296.0592,
+            "Tag": 9,
+            "ActionTag": 2143433064,
+            "Size": {
+              "X": 317.0,
+              "Y": 122.0
+            },
+            "Name": "testBtn1",
+            "ctype": "ButtonObjectData"
+          },
+          {
+            "FontSize": 14,
+            "ButtonText": "",
+            "TextColor": {
+              "R": 65,
+              "G": 65,
+              "B": 70
+            },
+            "DisabledFileData": {
+              "Type": "Normal",
+              "Path": "login/bnt_ykland_n.png",
+              "Plist": ""
+            },
+            "PressedFileData": {
+              "Type": "Normal",
+              "Path": "login/bnt_ykland_d.png",
+              "Plist": ""
+            },
+            "NormalFileData": {
+              "Type": "Normal",
+              "Path": "login/bnt_ykland_n.png",
+              "Plist": ""
+            },
+            "Scale9Enable": true,
+            "Scale9OriginX": 15,
+            "Scale9OriginY": 11,
+            "Scale9Width": 287,
+            "Scale9Height": 100,
+            "OutlineColor": {
+              "G": 0,
+              "B": 0
+            },
+            "ShadowColor": {
+              "R": 110,
+              "G": 110,
+              "B": 110
+            },
+            "ShadowOffsetX": 2.0,
+            "ShadowOffsetY": -2.0,
+            "TouchEnable": true,
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 662.0231,
+              "Y": 357.4088
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.5172,
+              "Y": 0.4964
+            },
+            "PreSize": {
+              "X": 0.2477,
+              "Y": 0.1694
+            },
+            "LeftMargin": 503.5231,
+            "RightMargin": 459.4769,
+            "TopMargin": 301.5912,
+            "BottomMargin": 296.4088,
+            "Tag": 10,
+            "ActionTag": -68793306,
+            "Size": {
+              "X": 317.0,
+              "Y": 122.0
+            },
+            "Name": "testBtn2",
+            "ctype": "ButtonObjectData"
+          },
+          {
+            "FontSize": 14,
+            "ButtonText": "",
+            "TextColor": {
+              "R": 65,
+              "G": 65,
+              "B": 70
+            },
+            "DisabledFileData": {
+              "Type": "Normal",
+              "Path": "login/bnt_ykland_n.png",
+              "Plist": ""
+            },
+            "PressedFileData": {
+              "Type": "Normal",
+              "Path": "login/bnt_ykland_d.png",
+              "Plist": ""
+            },
+            "NormalFileData": {
+              "Type": "Normal",
+              "Path": "login/bnt_ykland_n.png",
+              "Plist": ""
+            },
+            "Scale9Enable": true,
+            "Scale9OriginX": 15,
+            "Scale9OriginY": 11,
+            "Scale9Width": 287,
+            "Scale9Height": 100,
+            "OutlineColor": {
+              "G": 0,
+              "B": 0
+            },
+            "ShadowColor": {
+              "R": 110,
+              "G": 110,
+              "B": 110
+            },
+            "ShadowOffsetX": 2.0,
+            "ShadowOffsetY": -2.0,
+            "TouchEnable": true,
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 1042.0194,
+              "Y": 365.5207
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.8141,
+              "Y": 0.5077
+            },
+            "PreSize": {
+              "X": 0.2477,
+              "Y": 0.1694
+            },
+            "LeftMargin": 883.5194,
+            "RightMargin": 79.4806,
+            "TopMargin": 293.4793,
+            "BottomMargin": 304.5207,
+            "Tag": 11,
+            "ActionTag": 343651314,
+            "Size": {
+              "X": 317.0,
+              "Y": 122.0
+            },
+            "Name": "testBtn3",
+            "ctype": "ButtonObjectData"
+          }
+        ],
+        "Size": {
+          "X": 1280.0,
+          "Y": 720.0
+        },
+        "Name": "Layer",
+        "ctype": "LayerObjectData"
+      },
+      "UsedResources": [
+        "bg/home_bg.png",
+        "login/bnt_ykland_d.png",
+        "login/bnt_ykland_n.png",
+        "login/oe_logo_big.png",
+        "update/update_bar.png",
+        "update/update_loading_bar.png",
+        "update/update_loading_bar_bg.png",
+        "update/update_loadlabel.png"
+      ],
+      "ctype": "GameFileData"
+    }
+  },
+  "Type": "Layer"
+}

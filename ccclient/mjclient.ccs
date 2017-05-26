@@ -1,0 +1,27 @@
+<Solution>
+  <PropertyGroup Name="mjclient" Version="3.10.0.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="bg">
+          <Image Name="blockBg.png" />
+          <Image Name="home_bg.png" />
+        </Folder>
+        <Folder Name="login">
+          <Image Name="oe_logo_big.png" />
+          <Image Name="oe_logo_samll.png" />
+          <Image Name="bnt_ykland_d.png" />
+          <Image Name="bnt_ykland_n.png" />
+        </Folder>
+        <Folder Name="update">
+          <Image Name="loading_image.png" />
+          <Image Name="update_bar.png" />
+          <Image Name="update_loading_bar.png" />
+          <Image Name="update_loading_bar_bg.png" />
+          <Image Name="update_loadlabel.png" />
+        </Folder>
+        <Project Name="Update.csd" Type="Layer" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>

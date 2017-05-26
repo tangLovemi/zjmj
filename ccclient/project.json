@@ -1,0 +1,25 @@
+{
+    "project_type": "javascript",
+
+    "debugMode" : 1,
+    "showFPS" : false,
+    "frameRate" : 60,
+    "noCache" : false,
+    "id" : "gameCanvas",
+    "renderMode" : 0,
+    "engineDir":"frameworks/cocos2d-html5",
+
+    "modules" : ["cocos2d", "cocostudio"],
+
+    "jsList" : [
+        "src/pomelo/index.js",
+        "src/Gamenet.js",
+        "src/Result.js",
+        "src/EventMgr.js",
+		"src/Resources.js",
+        "src/Tools.js",
+        "src/GameScene.js",
+        "src/App.js",
+        "src/UpdateLayer.js"
+    ]
+}
