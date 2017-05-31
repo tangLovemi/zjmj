@@ -14,7 +14,7 @@
     "jsList" : [
         "src/Resources.js",
         "src/pomelo/index.js",
-        "src/tools/index.js",
+        "src/utils/index.js",
         "src/animation/index.js",
         "src/config/index.js",
         "src/event/index.js",
@@ -22,7 +22,7 @@
         "src/protobuf/index.js",
         "src/Result.js",
         "src/EventMgr.js",
-        "src/Tools.js",
+        "src/TestTools.js",
         "src/GameScene.js",
         "src/App.js",
         "src/UpdateLayer.js"

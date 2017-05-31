@@ -11,22 +11,7 @@ jsclient.PROTO_SERVER_PACKAGE_NAME = "com.sumi.core.server.proto";
 
 jsclient.ProtobufConfig = {
     CommonProtocol: "CommonProtocol",
-    ResultCodeProtocol: "ResultCodeProtocol",
-    PlayerProtocol: "PlayerProtocol",
-    DemoProtocol: "DemoProtocol",
-    CmdProtocol: "CmdProtocol",
-    LoginProtocol: "LoginProtocol",
-    MailProtocol: "MailProtocol",
-    ShopProtocol: "ShopProtocol",
-    FriendshipProtocol: "FriendshipProtocol",
-    CheckpointProtocol: "CheckpointProtocol",
-    GameProtocol: "GameProtocol",
-    BagProtocol: "BagProtocol",
-    PetProtocol: "PetProtocol",
-    TaskProtocol:"TaskProtocol",
-    LotteryProtocol:"LotteryProtocol",
-    RuneProtocol:"RuneProtocol",
-    TutorialProtocol:"TutorialProtocol"
+    LoginProtocol:"LoginProtocol"
 };
 
 jsclient.PROTO_SERVER_PACKAGE_PROTOCOLS = [jsclient.ProtobufConfig.CommonProtocol];

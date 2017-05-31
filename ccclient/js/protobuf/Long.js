@@ -919,13 +919,18 @@
         return new Long(this.low, this.high, this.unsigned);
     };
 
+    console.log("------------------aaaaaaaaaaaaaaaaaaaaa------------------llllllllllll");
     // Enable module loading if available
     if (typeof module != 'undefined' && module["exports"]) { // CommonJS
+        console.log("------------------aaaaaaaaaaaaaaaaaaaaa------------------1");
         module["exports"] = Long;
     } else if (typeof define != 'undefined' && define["amd"]) { // AMD
+        console.log("------------------aaaaaaaaaaaaaaaaaaaaa------------------2");
         define("Math/Long", [], function() { return Long; });
     } else { // Shim
+        console.log("------------------aaaaaaaaaaaaaaaaaaaaa------------------3");
         if (!global["dcodeIO"]) {
+            console.log("------------------aaaaaaaaaaaaaaaaaaaaa------------------4");
             global["dcodeIO"] = {};
         }
         global["dcodeIO"]["Long"] = Long;

@@ -1,12 +1,5 @@
 
 
-function Log(lg){
-    if( cc.sys.OS_WINDOWS != cc.sys.os ){
-        return;
-    }
-    //console.log(lg);
-    cc.log(lg);
-}
 
 function escapecode(num){
     var a = new Array("日", "一", "二", "三", "四", "五", "六");
@@ -149,4 +142,22 @@ function testCreateRoom(){
             }
         }
     );
+}
+
+
+function testProtobuf(){
+    var platform = jsclient.ProtoBufUtils.getEnumMessage(jsclient.ProtobufConfig.LoginProtocol, "GamePlatform").PLATFORM_WINDOWS;
+
+    var loginRequest = jsclient.ProtoBufUtils.newProtocolMessage(jsclient.ProtobufConfig.LoginProtocol, "CLoginRequest");
+    loginRequest.platform = platform;
+    loginRequest.gameId = jsclient.Config.getGameId();
+    loginRequest.uid = "10010";
+    jsclient.Log.debug("login-->loginRequest:" + jsclient.reflectionToString(loginRequest));
+
+
+    //jsclient.HttpClientUtils.sendProtobufMessage(jsclient.Config.URL_LOGIN, loginRequest, function(response, responseText){
+    //    jsclient.Log.debug("login-->responseText:" + responseText);
+    //    var loginResponse = jsclient.ProtoBufUtils.decodeMessageHex(jsclient.ProtobufConfig.LoginProtocol, "SLoginResponse", responseText);
+    //
+    //});
 }

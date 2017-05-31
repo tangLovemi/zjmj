@@ -2299,14 +2299,21 @@
 
         return ByteBuffer;
     }
+    console.log("------------------aaaaaaaaaaaaaaaaaaaaa------------------bbbbbbbbbbbb");
 
     // Enable module loading if available
     if (typeof module !== 'undefined' && module["exports"]) { // CommonJS
+        console.log("------------------aaaaaaaaaaaaaaaaaaaaa------------------1");
         module["exports"] = loadByteBuffer(require("src/protobuf/Long.js"));
     } else if (typeof define !== 'undefined' && define["amd"]) { // AMD
+        console.log("------------------aaaaaaaaaaaaaaaaaaaaa------------------2");
         define("ByteBuffer", ["Math/Long"], function(Long) { return loadByteBuffer(Long); });
     } else { // Shim
-        if (!global["dcodeIO"]) global["dcodeIO"] = {};
+        console.log("------------------aaaaaaaaaaaaaaaaaaaaa------------------3");
+        if (!global["dcodeIO"]){
+            console.log("------------------aaaaaaaaaaaaaaaaaaaaa------------------4");
+            global["dcodeIO"] = {};
+        }
         global["dcodeIO"]["ByteBuffer"] = loadByteBuffer(global["dcodeIO"]["Long"]);
     }
 

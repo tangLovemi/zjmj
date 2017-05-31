@@ -3,36 +3,35 @@
  */
 
 
-var SUMI_LOG_LEVEL_DEBUG = 1;
-var SUMI_LOG_LEVEL_INFO = 2;
-var SUMI_LOG_LEVEL_WARN = 3;
-var SUMI_LOG_LEVEL_ERROR = 4;
-var SUMI_LOG_LEVEL_FATAL = 5;
+var LOG_LEVEL_DEBUG = 1;
+var LOG_LEVEL_INFO = 2;
+var LOG_LEVEL_WARN = 3;
+var LOG_LEVEL_ERROR = 4;
+var LOG_LEVEL_FATAL = 5;
 
 
 jsclient.LOG_CC = true;
-jsclient.LOG_LEVEL = jsclient.PRODUCT_MODE ? SUMI_LOG_LEVEL_INFO : SUMI_LOG_LEVEL_DEBUG;
+jsclient.LOG_LEVEL = jsclient.PRODUCT_MODE ? LOG_LEVEL_INFO : LOG_LEVEL_DEBUG;
 
 jsclient.Log = {
-
     debug : function(message){
-        jsclient.Log._log(SUMI_LOG_LEVEL_DEBUG, message);
+        jsclient.Log._log(LOG_LEVEL_DEBUG, message);
     },
 
     info : function(message){
-        jsclient.Log._log(SUMI_LOG_LEVEL_INFO, message);
+        jsclient.Log._log(LOG_LEVEL_INFO, message);
     },
 
     warn : function(message){
-        jsclient.Log._log(SUMI_LOG_LEVEL_WARN, message);
+        jsclient.Log._log(LOG_LEVEL_WARN, message);
     },
 
     error : function(message){
-        jsclient.Log._log(SUMI_LOG_LEVEL_ERROR, message);
+        jsclient.Log._log(LOG_LEVEL_ERROR, message);
     },
 
     fatal : function(message){
-        jsclient.Log._log(SUMI_LOG_LEVEL_FATAL, message);
+        jsclient.Log._log(LOG_LEVEL_FATAL, message);
     },
 
     getArrayDebugInfo: function(arr){
@@ -70,19 +69,26 @@ jsclient.Log = {
     },
 
     _getLogLevelName: function(level){
-        if (level == SUMI_LOG_LEVEL_DEBUG){
+        if (level == LOG_LEVEL_DEBUG){
             return "DEBUG";
-        }else if (level == SUMI_LOG_LEVEL_INFO){
+        }else if (level == LOG_LEVEL_INFO){
             return "INFO";
-        }else if (level == SUMI_LOG_LEVEL_WARN){
+        }else if (level == LOG_LEVEL_WARN){
             return "WARN";
-        }else if (level == SUMI_LOG_LEVEL_ERROR){
+        }else if (level == LOG_LEVEL_ERROR){
             return "ERROR";
 
 
-        }else if (level == SUMI_LOG_LEVEL_FATAL){
+        }else if (level == LOG_LEVEL_FATAL){
             return "FATAL";
         }
         return "";
     }
 };
+
+function Log(lg){
+    if( cc.sys.OS_WINDOWS != cc.sys.os ){
+        return;
+    }
+    jsclient.Log.debug(lg)
+}

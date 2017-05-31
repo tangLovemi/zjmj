@@ -3716,14 +3716,18 @@
 
         return ProtoBuf;
     }
-
+    console.log("------------------aaaaaaaaaaaaaaaaaaaaa------------------ppppppp");
     // Enable module loading if available
     if (typeof module != 'undefined' && module["exports"]) { // CommonJS
+        console.log("------------------aaaaaaaaaaaaaaaaaaaaa------------------1");
         module["exports"] = loadProtoBuf(require("src/protobuf/ByteBuffer.js"));
     } else if (typeof define != 'undefined' && define["amd"]) { // AMD
+        console.log("------------------aaaaaaaaaaaaaaaaaaaaa------------------2");
         define("ProtoBuf", ["ByteBuffer"], loadProtoBuf);
     } else { // Shim
+        console.log("------------------aaaaaaaaaaaaaaaaaaaaa------------------3");
         if (!global["dcodeIO"]) {
+            console.log("------------------aaaaaaaaaaaaaaaaaaaaa------------------4");
             global["dcodeIO"] = {};
         }
         global["dcodeIO"]["ProtoBuf"] = loadProtoBuf(global["dcodeIO"]["ByteBuffer"]);

@@ -1,0 +1,91 @@
+syntax = "proto2";
+
+package com.sumi.proto;
+
+import "ResultCodeProtocol.proto";
+import "PlayerProtocol.proto";
+import "PetProtocol.proto";
+import "BagProtocol.proto";
+
+
+/**
+ * 游戏平台
+ */
+enum GamePlatform{
+	PLATFORM_WINDOWS = 0;		//windows模拟平台
+	PLATFORM_PP = 1;			//pp平台
+	PLATFORM_91 = 2;			//91平台
+	PLATFORM_JOY7 = 3;		// joy7平台
+    PLATFORM_DOWNJOY = 4;		// 当乐_Android
+    PLATFORM_XIAOMI = 5; 	// 小米
+    PLATFORM_DOWNJOY_IOS = 6;	// 当乐_IOS
+	PLATFORM_360 = 7;		// 360平台
+	PLATFORM_SINA = 8;		// sina微博平台
+}
+
+/**
+ * 各游戏ID
+ */
+enum GameId{
+	GAME_WARLOCK_WRATH = 2;	// 术士之怒
+}
+
+/**
+ * 登录请求
+ * LOGIN_LOGIN_REQUEST = 1000;
+ */
+message CLoginRequest{
+	optional GamePlatform platform = 1; // 平台
+	optional GameId gameId = 2;		//
+	optional string uid = 4;  // 用户名
+}
+
+/**
+ * 登录响应
+ * LOGIN_LOGIN_RESPONSE = 1001;
+ */
+message SLoginResponse{
+	required ResultCode result = 1; // 结果
+	required string sessionId = 2;  // sessionId,用于后期验证
+	optional string uid = 3;  // 用户名
+	optional GamePlatform commPlatform = 4;
+	optional string commUid = 5;
+	optional GamePlatform payPlatform = 6;
+	optional string payUid = 7;
+	optional SPlayerInfo player = 8; // 玩家信息
+	optional int64 totalPlayerNum = 9;		// 总用户数
+	optional SPetList pets = 10;
+	optional SBagInfo bagInfo = 11;
+}
+
+/**
+ * 退出登录请求
+ */
+message CLogoutRequest{
+	required GamePlatform platform = 1; // 平台
+	required string sessionId = 2;  // sessionId
+	optional string username = 3;  // 用户名
+}
+
+/**
+ * 退出登录响应
+ */
+message SLogoutResponse{
+	required ResultCode result = 1; // 结果
+	required string sessionId = 2;  // sessionId
+}
+
+/**
+ * 领取签到奖励请求
+ */
+message CReceiveLoginRewardRequest{
+	required string sessionId = 2;  // sessionId
+}
+
+/**
+ * 领取签到奖励响应
+ */
+message SReceiveLoginRewardResponse{
+	required ResultCode result = 1; // 结果
+	optional SPlayerInfo player = 2;
+}

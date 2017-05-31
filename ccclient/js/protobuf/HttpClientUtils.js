@@ -113,10 +113,11 @@ jsclient.HttpClientUtils = {
     },
 
     isSingle: function(){
-        if (!jsclient.HttpClientUtils._single){
-            var networkMode = jsclient.CsvConfigParser.getCommonConfigValue("NETWORK_MODE");
-            jsclient.HttpClientUtils._single = (networkMode == "1");
-        }
+        //if (!jsclient.HttpClientUtils._single){
+        //    var networkMode = jsclient.CsvConfigParser.getCommonConfigValue("NETWORK_MODE");
+        //    jsclient.HttpClientUtils._single = (networkMode == "1");
+        //}
+        //return jsclient.HttpClientUtils._single;
         return jsclient.HttpClientUtils._single;
     }
 };

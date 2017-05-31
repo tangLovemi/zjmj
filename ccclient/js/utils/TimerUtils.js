@@ -43,7 +43,6 @@ jsclient.TimerUtils = {
 
 
 jsclient.NodeTimerUtils = {
-
     cancelTimer : function(target, callback){
         jsclient.TimerUtils.cancelTimer(target, callback);
     },
@@ -117,6 +116,4 @@ jsclient.SchedulerHelper = cc.Class.extend({
         // Log("changeTimerArgs-->this:" + jsclient.reflectionToString(this));
 
     }
-
-
 });
