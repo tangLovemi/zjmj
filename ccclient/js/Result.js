@@ -64,9 +64,16 @@
 
 };
 
-if(module){
-   module.exports =ZJHCode;
-}
-else{
-   console.error('module not exist');
+//if(module){
+//   module.exports =ZJHCode;
+//}
+//else{
+//   console.error('module not exist');
+//}
+
+if (typeof module != 'undefined' && module["exports"]) { // CommonJS
+   module.exports = ZJHCode;
+} else if (typeof define != 'undefined' && define["amd"]) { // AMD
+   define("Result", [], function() { return ZJHCode; });
+} else { // Shim
 }

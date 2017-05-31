@@ -6,6 +6,8 @@ var jsclient = jsclient || {};
 
 jsclient.Config = {
 
+    DOMAIN_NAME:"sumi",
+
     /**
      * 服务器IP
 	*/
@@ -32,7 +34,7 @@ jsclient.Config = {
 
     getGameId: function(){
         var GameId = jsclient.ProtoBufUtils.getEnumMessage(jsclient.ProtobufConfig.LoginProtocol, "GameId");
-        return GameId.GAME_HOME_DEFENSE;
+        return GameId.GAME_ZJMJ;
     },
 
     getWsUrl : function(){

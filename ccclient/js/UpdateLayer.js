@@ -69,9 +69,9 @@
             jsclient.updateui = this;
             setProgressPercent(66);
 
-            testXhr();
-
-            jsclient.initGameNet();
+            //testXhr();
+            //
+            //jsclient.initGameNet();
 
 
             testProtobuf();
