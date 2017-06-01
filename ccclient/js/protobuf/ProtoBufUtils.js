@@ -6,9 +6,6 @@
  * To change this template use File | Settings | File Templates.
  */
 
-jsclient.PROTO_DIR_NAME = jsclient.PROTO_DIR_NAME || "res/proto/";
-jsclient.PROTO_GAME_PACKAGE_NAME = jsclient.PROTO_GAME_PACKAGE_NAME || "com." + jsclient.Config.DOMAIN_NAME + ".proto";
-jsclient.PROTO_SERVER_PACKAGE_NAME = jsclient.PROTO_SERVER_PACKAGE_NAME || "com." + jsclient.Config.DOMAIN_NAME + ".core.server.proto";
 jsclient.PROTO_SERVER_PACKAGE_PROTOCOLS = jsclient.PROTO_SERVER_PACKAGE_PROTOCOLS || [];
 
 jsclient.ProtoBufUtils = (function () {

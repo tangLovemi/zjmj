@@ -10,8 +10,14 @@ jsclient.PROTO_GAME_PACKAGE_NAME = "com." + jsclient.Config.DOMAIN_NAME + ".prot
 jsclient.PROTO_SERVER_PACKAGE_NAME = "com." + jsclient.Config.DOMAIN_NAME + ".core.server.proto";
 
 jsclient.ProtobufConfig = {
-    CommonProtocol: "CommonProtocol",
     LoginProtocol:"LoginProtocol"
 };
 
-jsclient.PROTO_SERVER_PACKAGE_PROTOCOLS = [jsclient.ProtobufConfig.CommonProtocol];
+jsclient.PROTO_SERVER_PACKAGE_PROTOCOLS = [];
+
+
+
+
+jsclient.URLConfig = {
+    URL_LOGIN: "/server/player/login.do",  //  登录
+}

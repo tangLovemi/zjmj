@@ -43,23 +43,22 @@
             testBtn1:{
                 _layout: [[0.2, 0.2], [0.5, 0.5], [-1.8, 0]],
                 _click:function(){
-                    testConnect();
+                    //testConnect();
                 }
             },
             testBtn2:{
                 _layout: [[0.2, 0.2], [0.5, 0.5], [0, 0]],
                 _click:function(){
-                    testLogin();
+                    //testLogin();
                 }
             },
             testBtn3:{
                 _layout: [[0.2, 0.2], [0.5, 0.5], [1.8, 0]],
                 _visible:false,
                 _click:function(){
-                    testCreateRoom();
+                    //testCreateRoom();
                 }
             },
-
         },
         ctor: function () {
             this._super();
@@ -70,7 +69,6 @@
             setProgressPercent(66);
 
             //testXhr();
-            //
             //jsclient.initGameNet();
 
 

@@ -30,7 +30,6 @@ jsclient.Config = {
      */
     WEB_CONTEXT_PATH : "/homeDefenseStats",
 
-    URL_LOGIN: "/server/player/login.do",  //  登录
 
     getGameId: function(){
         var GameId = jsclient.ProtoBufUtils.getEnumMessage(jsclient.ProtobufConfig.LoginProtocol, "GameId");

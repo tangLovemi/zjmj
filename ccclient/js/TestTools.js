@@ -155,9 +155,9 @@ function testProtobuf(){
     jsclient.Log.debug("login-->loginRequest:" + jsclient.reflectionToString(loginRequest));
 
 
-    //jsclient.HttpClientUtils.sendProtobufMessage(jsclient.Config.URL_LOGIN, loginRequest, function(response, responseText){
-    //    jsclient.Log.debug("login-->responseText:" + responseText);
-    //    var loginResponse = jsclient.ProtoBufUtils.decodeMessageHex(jsclient.ProtobufConfig.LoginProtocol, "SLoginResponse", responseText);
-    //
-    //});
+    jsclient.HttpClientUtils.sendProtobufMessage(jsclient.URLConfig.URL_LOGIN, loginRequest, function(response, responseText){
+        jsclient.Log.debug("login-->responseText:" + responseText);
+        var loginResponse = jsclient.ProtoBufUtils.decodeMessageHex(jsclient.ProtobufConfig.LoginProtocol, "SLoginResponse", responseText);
+
+    });
 }
