@@ -32,11 +32,11 @@ jsclient.FileUtils = (function () {
      * @return {Uint8Array}
      */
     FileUtils.getByteArrayFromFile = function (path){
-        return cc.FileUtils.getInstance().getByteArrayFromFile(path);
+        return jsb.fileUtils.getByteArrayFromFile(path);
     };
 
     FileUtils.fullPathForFilename =  function (name){
-        return cc.FileUtils.getInstance().fullPathForFilename(name);
+        return jsb.fileUtils.fullPathForFilename(name);
     };
 
     FileUtils.addSearchPath = function (path){

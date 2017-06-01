@@ -20,7 +20,6 @@
         "src/animation/index.js",
         "src/event/index.js",
         "src/Result.js",
-        "src/EventMgr.js",
         "src/TestTools.js",
         "src/GameScene.js",
         "src/App.js",

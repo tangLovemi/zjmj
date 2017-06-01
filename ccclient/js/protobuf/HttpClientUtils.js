@@ -85,7 +85,6 @@ jsclient.HttpClientUtils = {
                     Log("send url:" + url + ", succeed");
 
                     jsclient.HttpClientUtils._isNetwork = true;
-                    jsclient.LoadingUtils.hideLoading(null, 0.2);
                     jsclient.call(callback, callbackTarget, xhr.response, xhr.responseText);
                 } else { //An error occured
                     Log("send url:" + sendUrl + " error, error status :" + xhr.status);
@@ -148,12 +147,13 @@ jsclient.HttpClientRequestInfo = cc.Class.extend({
         var self = this;
         var timeoutCallback = function(){
             self._isEnd = true;
-            jsclient.LoadingUtils.hideLoading();
 
             if (this._timeoutCallback){
                 jsclient.call(this._timeoutCallback, this._timeoutCallbackTarget);
             }else{
-                jsclient.TipUtils.showSimpleTipByInfoCode("3");
+                //jsclient.TipUtils.showSimpleTipByInfoCode("3");
+                //delay time handle
+
             }
         }
         this._timeoutTimer = new jsclient.SchedulerHelper(timeoutCallback);
