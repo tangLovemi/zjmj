@@ -71,7 +71,6 @@
             //testXhr();
             //jsclient.initGameNet();
 
-
             testProtobuf();
 
 
