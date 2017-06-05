@@ -286,7 +286,8 @@
                             return null;
                         }
                     }
-                } else {
+                }
+                else {
                     var xhr = Util.XHR();
                     xhr.open('GET', path, callback ? true : false);
                     // xhr.setRequestHeader('User-Agent', 'XMLHTTP/1.0');

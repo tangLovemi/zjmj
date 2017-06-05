@@ -147,8 +147,12 @@ function testCreateRoom(){
 
 function testProtobuf(){
     var platform = jsclient.ProtoBufUtils.getEnumMessage(jsclient.ProtobufConfig.LoginProtocol, "GamePlatform").PLATFORM_WINDOWS;
+    Log("TestTools.js loginRequest:" + (typeof platform));
+    Log("TestTools.js loginRequest:" + platform);
 
     var loginRequest = jsclient.ProtoBufUtils.newProtocolMessage(jsclient.ProtobufConfig.LoginProtocol, "CLoginRequest");
+    Log("TestTools.js loginRequest:" + (typeof loginRequest));
+    Log("TestTools.js loginRequest:" + JSON.stringify(loginRequest));
     loginRequest.platform = platform;
     loginRequest.gameId = jsclient.Config.getGameId();
     loginRequest.uid = "10010";

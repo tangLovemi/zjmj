@@ -69,10 +69,13 @@ jsclient.HttpClientUtils = {
 
     _sendProtobufMessageToServer: function(url, message, callback, callbackTarget){
         var data = message.encodeHex();
+        Log("send data:" + data);
 
         var xhr = new XMLHttpRequest();
 
         var sendUrl = jsclient.Config.getServerWebUrl() + url + "?t=" + new Date().getTime();
+        Log("HttpClient.js _sendProtobufMessageToServer() sendUrl:" + url);
+        Log("HttpClient.js _sendProtobufMessageToServer() sendUrl:" + sendUrl);
         xhr.open("POST", sendUrl, true);
         xhr.responseType = "arraybuffer";
 //        xhr.setRequestHeader("Content-length", datas.byteLength);
@@ -91,7 +94,6 @@ jsclient.HttpClientUtils = {
                 }
             }
         }
-        // Log("send data:" + data);
         xhr.send("data=" + data);
     },
 

@@ -76,10 +76,7 @@
   var initCallback = null;
 
   pomelo.init = function(params, cb) {
-    console.log("pomelo-client.init()11111");
-    if(params){
-      console.log("pomelo-client.init()11111 params:" + JSON.stringify(params));
-    }
+    console.log("pomelo-client.init() BEGIN");
     initCallback = cb;
     var host = params.host;
     var port = params.port;
@@ -123,18 +120,23 @@
   };
 
   var defaultEncode = pomelo.encode = function(reqId, route, msg) {
+    console.log("pomelo-client.js defaultEncode() BEGIN");
+    console.log("pomelo-client.js defaultEncode() reqId:" + reqId);
+    console.log("pomelo-client.js defaultEncode() route:" + route);
+    console.log("pomelo-client.js defaultEncode() msg:" + JSON.stringify(msg));
     var type = reqId ? Message.TYPE_REQUEST : Message.TYPE_NOTIFY;
 
     //compress message by protobuf
     if(protobuf && clientProtos[route]) {
       msg = protobuf.encode(route, msg);
-    } else if(decodeIO_encoder && decodeIO_encoder.lookup(route)) {
+    }else if(decodeIO_encoder && decodeIO_encoder.lookup(route)) {
       var Builder = decodeIO_encoder.build(route);
       msg = new Builder(msg).encodeNB();
     } else {
       msg = Protocol.strencode(JSON.stringify(msg));
     }
 
+    console.log("pomelo-client.js defaultEncode() typeof msg:" + (typeof msg));
     var compressRoute = 0;
     if(dict && dict[route]) {
       route = dict[route];
@@ -153,6 +155,7 @@
     //Add protobuf version
     if(window.localStorage && window.localStorage.getItem('protos') && protoVersion === 0) {
       var protos = JSON.parse(window.localStorage.getItem('protos'));
+      console.log("pomelo-client.js connect() protos:" + JSON.stringify(protos));
 
       protoVersion = protos.version || 0;
       serverProtos = protos.server || {};
@@ -162,6 +165,7 @@
         protobuf.init({encoderProtos: clientProtos, decoderProtos: serverProtos});
       } 
       if(!!decodeIO_protobuf) {
+        console.log("pomelo-client.js connect() 222");
         decodeIO_encoder = decodeIO_protobuf.loadJson(clientProtos);
         decodeIO_decoder = decodeIO_protobuf.loadJson(serverProtos);
       }
@@ -170,6 +174,7 @@
     handshakeBuffer.sys.protoVersion = protoVersion;
 
     var onopen = function(event) {
+      Log("pomelo-client.js connect() onopen()");
       if(!!reconnect) {
         pomelo.emit('reconnect');
       }
@@ -178,6 +183,7 @@
       send(obj);
     };
     var onmessage = function(event) {
+      Log("pomelo-client.js connect() onmessage()");
       processPackage(Package.decode(event.data), cb);
       // new package arrived, update the heartbeat timeout
       if(heartbeatTimeout) {
@@ -185,10 +191,12 @@
       }
     };
     var onerror = function(event) {
+      Log("pomelo-client.js connect() onerror()");
       pomelo.emit('io-error', event);
       console.error('socket error: ', event);
     };
     var onclose = function(event) {
+      Log("pomelo-client.js connect() onclose()");
       pomelo.emit('close',event);
       pomelo.emit('disconnect', event);
       console.error('socket close: ', event);
@@ -278,7 +286,7 @@
 
     console.log("sendMessage() msg2:" + JSON.stringify(msg));
     var packet = Package.encode(Package.TYPE_DATA, msg);
-    send(packet);
+    //send(packet);/////////////临时
   };
 
   var send = function(packet) {

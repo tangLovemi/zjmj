@@ -11,7 +11,7 @@ var GameScene = cc.Scene.extend({
                     jsclient.restartGame();
                 }
                 if(key == 67 && jsclient.homeui){
-                    jsclient.exportDataLayer();
+                    //jsclient.exportDataLayer();
                 }
             }
         }
@@ -20,5 +20,8 @@ var GameScene = cc.Scene.extend({
         this._super();
         ConnectUI2Logic(this, this.jsBind);
         this.addChild(new UpdateLayer());
+
+        //var pLayer = WebSocketTestLayer.create();
+        //this.addChild(pLayer);
     }
 });

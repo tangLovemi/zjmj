@@ -13,5 +13,8 @@ jsclient.initGameNet=function(){
 }
 
 jsclient.connect=function(host, port, successCb, failCb){
+    if(!jsclient.gamenet){
+        jsclient.initGameNet();
+    }
     jsclient.gamenet.connect(host, port, successCb, failCb);
 }

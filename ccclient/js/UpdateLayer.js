@@ -43,13 +43,13 @@
             testBtn1:{
                 _layout: [[0.2, 0.2], [0.5, 0.5], [-1.8, 0]],
                 _click:function(){
-                    //testConnect();
+                    testConnect();
                 }
             },
             testBtn2:{
                 _layout: [[0.2, 0.2], [0.5, 0.5], [0, 0]],
                 _click:function(){
-                    //testLogin();
+                    testLogin();
                 }
             },
             testBtn3:{
@@ -57,9 +57,16 @@
                 _visible:false,
                 _click:function(){
                     //testCreateRoom();
+                    testProtobuf();
                 }
             },
         },
+        onExit: function() {
+            this._super();
+            if(jsclient.gamenet)
+                jsclient.gamenet.disconnect();
+        },
+
         ctor: function () {
             this._super();
             var updateui = ccs.load(res.Update_json);
@@ -69,9 +76,8 @@
             setProgressPercent(66);
 
             //testXhr();
-            //jsclient.initGameNet();
+            jsclient.initGameNet();
 
-            testProtobuf();
 
 
 

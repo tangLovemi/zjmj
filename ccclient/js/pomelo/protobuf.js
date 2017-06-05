@@ -21,6 +21,7 @@
   };
 
   Protobuf.encode = function(key, msg){
+    //console.log("protobuf.js Protobuf.encode");
     return Protobuf.encoder.encode(key, msg);
   };
 
