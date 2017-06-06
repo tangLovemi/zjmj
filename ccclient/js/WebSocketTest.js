@@ -155,6 +155,7 @@ var WebSocketTestLayer = cc.Layer.extend({
 
            var str = "";
            for (var i = 0; i < binary.length; i++) {
+               Log("onmessage:binary:"+binary[i]);
                if (binary[i] == 0)
                {
                    str += "\'\\0\'";
@@ -162,6 +163,7 @@ var WebSocketTestLayer = cc.Layer.extend({
                else
                {
                    var hexChar = "0x" + binary[i].toString("16").toUpperCase();
+                   Log("onmessage:hexChar:"+hexChar);
                    str += String.fromCharCode(hexChar);
                }
            }
