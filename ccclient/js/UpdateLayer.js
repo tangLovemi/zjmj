@@ -43,7 +43,8 @@
             testBtn1:{
                 _layout: [[0.2, 0.2], [0.5, 0.5], [-1.8, 0]],
                 _click:function(){
-                    testConnect();
+                    //testConnect();
+                    testProtobuf();
                 }
             },
             testBtn2:{
@@ -57,7 +58,6 @@
                 _visible:false,
                 _click:function(){
                     //testCreateRoom();
-                    testProtobuf();
                 }
             },
         },
@@ -76,7 +76,7 @@
             setProgressPercent(66);
 
             //testXhr();
-            jsclient.initGameNet();
+            //jsclient.initGameNet();
 
 
 

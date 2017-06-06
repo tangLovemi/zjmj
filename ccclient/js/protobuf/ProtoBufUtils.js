@@ -111,6 +111,7 @@ jsclient.ProtoBufUtils = (function () {
     };
 
     ProtoBufUtils._getProtocolFromFile = function (fileName, path) {
+        Log("ProtoBufUtils.js _getProtocolFromFile() fileName:" + fileName + "  path:" + path);
         var message =  dcodeIO.ProtoBuf.loadProtoFile(fileName).build(path);
         return message;
     };

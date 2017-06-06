@@ -156,12 +156,14 @@ function testProtobuf(){
     loginRequest.platform = platform;
     loginRequest.gameId = jsclient.Config.getGameId();
     loginRequest.uid = "10010";
-    jsclient.Log.debug("login-->loginRequest:" + jsclient.reflectionToString(loginRequest));
+    jsclient.Log.debug("login-->loginRequest:" + JSON.stringify(loginRequest));
 
 
-    jsclient.HttpClientUtils.sendProtobufMessage(jsclient.URLConfig.URL_LOGIN, loginRequest, function(response, responseText){
-        jsclient.Log.debug("login-->responseText:" + responseText);
-        var loginResponse = jsclient.ProtoBufUtils.decodeMessageHex(jsclient.ProtobufConfig.LoginProtocol, "SLoginResponse", responseText);
-
-    });
+    //jsclient.HttpClientUtils.sendProtobufMessage(jsclient.URLConfig.URL_LOGIN, loginRequest, function(response, responseText){
+    //    jsclient.Log.debug("login-->responseText:" + responseText);
+    //    var loginResponse = jsclient.ProtoBufUtils.decodeMessageHex(jsclient.ProtobufConfig.LoginProtocol, "SLoginResponse", responseText);
+    //
+    //});
+    var loginResponse = jsclient.ProtoBufUtils.decodeMessageHex(jsclient.ProtobufConfig.LoginProtocol, "CLoginRequest", "0800100122053130303130");
+    Log("loginResponse:" + JSON.stringify(loginResponse));
 }
