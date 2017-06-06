@@ -19,9 +19,7 @@ var GameScene = cc.Scene.extend({
     onEnter: function () {
         this._super();
         ConnectUI2Logic(this, this.jsBind);
-        this.addChild(new UpdateLayer());
-
-        //var pLayer = WebSocketTestLayer.create();
-        //this.addChild(pLayer);
+        //this.addChild(new UpdateLayer());
+        this.addChild(WebSocketTestLayer.create());
     }
 });

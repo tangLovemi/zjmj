@@ -174,7 +174,7 @@
     handshakeBuffer.sys.protoVersion = protoVersion;
 
     var onopen = function(event) {
-      Log("pomelo-client.js connect() onopen()");
+      Log("pomelo-client.js connect() back onopen()");
       if(!!reconnect) {
         pomelo.emit('reconnect');
       }
@@ -183,7 +183,7 @@
       send(obj);
     };
     var onmessage = function(event) {
-      Log("pomelo-client.js connect() onmessage()");
+      Log("pomelo-client.js connect() back onmessage() data:" + JSON.stringify(Package.decode(event.data)));
       processPackage(Package.decode(event.data), cb);
       // new package arrived, update the heartbeat timeout
       if(heartbeatTimeout) {
@@ -191,12 +191,12 @@
       }
     };
     var onerror = function(event) {
-      Log("pomelo-client.js connect() onerror()");
+      Log("pomelo-client.js connect() back onerror()");
       pomelo.emit('io-error', event);
       console.error('socket error: ', event);
     };
     var onclose = function(event) {
-      Log("pomelo-client.js connect() onclose()");
+      Log("pomelo-client.js connect() back onclose()");
       pomelo.emit('close',event);
       pomelo.emit('disconnect', event);
       console.error('socket close: ', event);
