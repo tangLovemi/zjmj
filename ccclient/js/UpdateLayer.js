@@ -43,8 +43,8 @@
             testBtn1:{
                 _layout: [[0.2, 0.2], [0.5, 0.5], [-1.8, 0]],
                 _click:function(){
-                    //testConnect();
-                    testProtobuf();
+                    testConnect();
+                    //testProtobuf();
                 }
             },
             testBtn2:{

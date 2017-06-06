@@ -59,7 +59,7 @@ function GameNet() {
 
     //* 连接网络请求 *
     this.connect = function (host,port,f_ok,f_fail) {
-	    Log("gamenet.js: GameNet().connect()");
+	    Log("gamenet.js: GameNet().connect() host:" + host + " port:" + port);
 		reqPingPong=[];
 		pomelo.disconnect();
 		this.SetCallBack(pomelo_disconnect,f_fail);

@@ -124,6 +124,7 @@ Emitter.prototype.removeEventListener = function(event, fn){
  */
 
 Emitter.prototype.emit = function(event){
+  Log("emitter.js Emitter.prototype.emit() arguments:"+JSON.stringify(arguments));
   this._callbacks = this._callbacks || {};
   var args = [].slice.call(arguments, 1)
     , callbacks = this._callbacks[event];

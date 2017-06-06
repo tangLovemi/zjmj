@@ -26,14 +26,15 @@ function testXhr(){
 }
 
 function testConnect(){
-    var host = "114.55.253.227";
-    var port = 15010;
+    var host = "echo.websocket.org";
+    //var port = 15010;
+    var port = 0;
     jsclient.connect(host, port,
         function(){
-            Log("connect success !!!");
+            Log("connect success !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         },
         function(){
-            Log("connect fail !!!");
+            Log("connect fail !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
     );
 }
