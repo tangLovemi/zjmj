@@ -50,7 +50,8 @@
             testBtn2:{
                 _layout: [[0.2, 0.2], [0.5, 0.5], [0, 0]],
                 _click:function(){
-                    testLogin();
+                    //testLogin();
+                    testSendText();
                 }
             },
             testBtn3:{

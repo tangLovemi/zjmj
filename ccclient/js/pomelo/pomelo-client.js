@@ -188,7 +188,7 @@
       //processPackage(Package.decode(event.data), cb);
 
       Log("pomelo-client.js connect() back onmessage() data:" + event.data);
-      processMessage(pomelo, event.data);
+      processMessage(pomelo, JSON.parse(event.data));
       // new package arrived, update the heartbeat timeout
       if(heartbeatTimeout) {
         nextHeartbeatTimeout = Date.now() + heartbeatTimeout;
@@ -289,7 +289,7 @@
     //  msg = encode(reqId, route, msg);
     //}
 
-    Log("sendMessage() msg2:" + JSON.stringify(msg));
+    Log("pomelo-client.js sendMessage() msg:" + JSON.stringify(msg));
     //var packet = Package.encode(Package.TYPE_DATA, msg);
     //send(packet);/////////////临时
 

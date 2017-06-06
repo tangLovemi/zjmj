@@ -39,6 +39,16 @@ function testConnect(){
     );
 }
 
+function testSendText(){
+    jsclient.gamenet.request(
+        "testSendText",
+        {test:1},
+        function(rtn) {
+            Log("TestTools.js testSendText() rtn:" + JSON.stringify(rtn));
+        }
+    );
+}
+
 function testLogin(){
     var f_login = function(mail, code, isLocalGuest){
         Log("Tools.js: f_login()");
