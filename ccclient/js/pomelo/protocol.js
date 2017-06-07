@@ -152,7 +152,7 @@
    * @param  {Buffer} msg           message body bytes
    * @return {Buffer}               encode result
    */
-  Message.encode = function(id, type, compressRoute, route, msg){
+  Message.encode = function(id, type, compressRoute, route, messageId, msg){
     // caculate message max length
     var idBytes = msgHasId(type) ? caculateMsgIdBytes(id) : 0;
     var msgLen = MSG_FLAG_BYTES + idBytes;
@@ -190,10 +190,14 @@
       offset = encodeMsgId(id, buffer, offset);
     }
 
+    // add messageid
+    offset = encodeMessageId(messageId, buffer, offset);
+
     // add route
     if(msgHasRoute(type)) {
       offset = encodeMsgRoute(compressRoute, route, buffer, offset);
     }
+
 
     // add body
     if(msg) {
@@ -313,6 +317,22 @@
 
       id = next;
     } while(id !== 0);
+
+    return offset;
+  };
+
+  var encodeMessageId = function(messageId, buffer, offset) {
+    do{
+      var tmp = messageId % 128;
+      var next = Math.floor(messageId/128);
+
+      if(next !== 0){
+        tmp = tmp + 128;
+      }
+      buffer[offset++] = tmp;
+
+      messageId = next;
+    } while(messageId !== 0);
 
     return offset;
   };
