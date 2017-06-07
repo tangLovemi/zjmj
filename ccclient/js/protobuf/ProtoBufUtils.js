@@ -57,7 +57,7 @@ jsclient.ProtoBufUtils = (function () {
         }
     };
 
-    ProtoBufUtils.newProtocolMessage = function(protocolName, messageName, param){
+     ProtoBufUtils.newProtocolMessage = function(protocolName, messageName, param){
         var Protocol = jsclient.ProtoBufUtils.getProtocolFromFile(protocolName);
         if (param){
             return new Protocol[messageName](param);

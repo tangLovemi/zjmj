@@ -28,8 +28,6 @@ window.EventEmitter = Emitter;
 
 require('src/pomelo/protocol.js');
 
-require('src/pomelo/protobuf.js');
-
 require('src/pomelo/pomelo-client.js');
 
 require('src/pomelo/Gamenet.js');

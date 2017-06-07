@@ -88,7 +88,7 @@ jsclient.Log = {
 
 function Log(lg){
     if( cc.sys.OS_WINDOWS != cc.sys.os ){
-        return;
+        //return;
     }
     jsclient.Log.debug(lg)
 }

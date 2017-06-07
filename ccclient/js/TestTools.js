@@ -48,6 +48,15 @@ function testSendText(){
         }
     );
 }
+function testSendBinary(){
+    jsclient.gamenet.request(
+        "testSendBinary",
+        {text:"你好", age:18},
+        function(rtn) {
+            Log("TestTools.js testSendText() rtn:" + JSON.stringify(rtn));
+        }
+    );
+}
 
 function testLogin(){
     var f_login = function(mail, code, isLocalGuest){
@@ -170,11 +179,34 @@ function testProtobuf(){
     jsclient.Log.debug("login-->loginRequest:" + JSON.stringify(loginRequest));
 
 
-    //jsclient.HttpClientUtils.sendProtobufMessage(jsclient.URLConfig.URL_LOGIN, loginRequest, function(response, responseText){
-    //    jsclient.Log.debug("login-->responseText:" + responseText);
-    //    var loginResponse = jsclient.ProtoBufUtils.decodeMessageHex(jsclient.ProtobufConfig.LoginProtocol, "SLoginResponse", responseText);
-    //
-    //});
+    jsclient.HttpClientUtils.sendProtobufMessage(jsclient.RouteConfig.URL_LOGIN, loginRequest, function(response, responseText){
+        jsclient.Log.debug("login-->responseText:" + responseText);
+        var loginResponse = jsclient.ProtoBufUtils.decodeMessageHex(jsclient.ProtobufConfig.LoginProtocol, "SLoginResponse", responseText);
+
+    });
     var loginResponse = jsclient.ProtoBufUtils.decodeMessageHex(jsclient.ProtobufConfig.LoginProtocol, "CLoginRequest", "0800100122053130303130");
+    Log("typeof loginResponse:" + (typeof loginResponse));
     Log("loginResponse:" + JSON.stringify(loginResponse));
 }
+
+function testSendProtobufByWebSocket(){
+    var platform = jsclient.ProtoBufUtils.getEnumMessage(jsclient.ProtobufConfig.LoginProtocol, "GamePlatform").PLATFORM_WINDOWS;
+    var loginRequest = jsclient.ProtoBufUtils.newProtocolMessage(jsclient.ProtobufConfig.LoginProtocol, "CLoginRequest");
+    loginRequest.platform = platform;
+    loginRequest.gameId = jsclient.Config.getGameId();
+    loginRequest.uid = "10010";
+
+    jsclient.gamenet.request(
+        jsclient.RouteConfig.URL_LOGIN,
+        loginRequest,
+        function(rtn) {
+            Log("TestTools.js testSendText() rtn:" + JSON.stringify(rtn));
+        }
+    );
+}
+
+
+
+
+
+

@@ -75,38 +75,49 @@
 
   var initCallback = null;
 
-  pomelo.init = function(params, cb) {
-    Log("pomelo-client.init() BEGIN");
-    initCallback = cb;
-    var host = params.host;
-    var port = params.port;
 
-    //encode = params.encode || defaultEncode;
-    //decode = params.decode || defaultDecode;
 
-    var url = 'ws://' + host;
-    if(port) {
-      url +=  ':' + port;
+  var reset = function() {
+    reconnect = false;
+    reconnectionDelay = 1000 * 5;
+    reconnectAttempts = 0;
+    if(reconncetTimer)
+    {
+      clearTimeout(reconncetTimer);
+      reconncetTimer=null;
     }
+  };
 
-    //handshakeBuffer.user = params.user;
-    //if(params.encrypt) {
-    //  useCrypto = true;
-    //  rsa.generate(1024, "10001");
-    //  var data = {
-    //    rsa_n: rsa.n.toString(16),
-    //    rsa_e: rsa.e
-    //  }
-    //  handshakeBuffer.sys.rsa = data;
-    //}
-    //handshakeCallback = params.handshakeCallback;
-    connect(params, url, cb);
+  var deCompose = function(msg) {
+    var data = Protocol.strdecode(msg.body);
+    Log("pomelo-client.js deCompose() typeof data:" + (typeof data));
+    Log("pomelo-client.js deCompose() data:" + data);
+    var loginResponse = jsclient.ProtoBufUtils.decodeMessageHex(jsclient.ProtobufConfig.LoginProtocol, "SLoginResponse", data);
+    return loginResponse;
+  };
+
+  var defaultEncode = pomelo.encode = function(reqId, route, messageId, msg) {
+    Log("pomelo-client.js defaultEncode() BEGIN");
+    Log("pomelo-client.js defaultEncode() reqId:" + reqId);
+    Log("pomelo-client.js defaultEncode() route:" + route);
+    Log("pomelo-client.js defaultEncode() msg:" + msg);
+
+    var type = reqId ? Message.TYPE_REQUEST : Message.TYPE_NOTIFY;
+    msg = Protocol.strencode(msg);
+    var compressRoute = 0;
+    if(dict && dict[route]) {
+      route = dict[route];
+      compressRoute = 1;
+    }
+    Log("pomelo-client.js defaultEncode() after Protocol.strencode() typeof msg:" + (typeof msg));
+    Log("pomelo-client.js defaultEncode() after Protocol.strencode() msg:" + msg);
+    return Message.encode(reqId, type, compressRoute, route,  messageId, msg);
   };
 
   var defaultDecode = pomelo.decode = function(data) {
     //probuff decode
     var msg = Message.decode(data);
-
+    Log("pomelo-client.js defaultDecode() msg:" + JSON.stringify(msg));
     if(msg.id > 0){
       msg.route = routeMap[msg.id];
       delete routeMap[msg.id];
@@ -114,41 +125,12 @@
         return;
       }
     }
-
     msg.body = deCompose(msg);
     return msg;
   };
 
-  var defaultEncode = pomelo.encode = function(reqId, route, msg) {
-    Log("pomelo-client.js defaultEncode() BEGIN");
-    Log("pomelo-client.js defaultEncode() reqId:" + reqId);
-    Log("pomelo-client.js defaultEncode() route:" + route);
-    Log("pomelo-client.js defaultEncode() msg:" + JSON.stringify(msg));
-    var type = reqId ? Message.TYPE_REQUEST : Message.TYPE_NOTIFY;
-
-    //compress message by protobuf
-    if(protobuf && clientProtos[route]) {
-      msg = protobuf.encode(route, msg);
-    }else if(decodeIO_encoder && decodeIO_encoder.lookup(route)) {
-      var Builder = decodeIO_encoder.build(route);
-      msg = new Builder(msg).encodeNB();
-    } else {
-      msg = Protocol.strencode(JSON.stringify(msg));
-    }
-
-    Log("pomelo-client.js defaultEncode() typeof msg:" + (typeof msg));
-    var compressRoute = 0;
-    if(dict && dict[route]) {
-      route = dict[route];
-      compressRoute = 1;
-    }
-
-    return Message.encode(reqId, type, compressRoute, route, msg);
-  };
 
   var connect = function(params, url, cb) {
-    Log('connect to ' + url);
-
     var params = params || {};
     var maxReconnectAttempts = params.maxReconnectAttempts || DEFAULT_MAX_RECONNECT_ATTEMPTS;
     reconnectUrl = url;
@@ -174,52 +156,79 @@
     //handshakeBuffer.sys.protoVersion = protoVersion;
 
     var onopen = function(event) {
-      Log("pomelo-client.js connect() back onopen()");
-      if(!!reconnect) {
-        pomelo.emit('reconnect');
-      }
-      //这里需要对心跳初始化
-      //reset();
-      //var obj = Package.encode(Package.TYPE_HANDSHAKE, Protocol.strencode(JSON.stringify(handshakeBuffer)));
-      //send(obj);
+        Log("pomelo-client.js websocket callback onopen()");
+        if(!!reconnect) {
+          pomelo.emit('reconnect');
+        }
+        //这里需要对心跳初始化
+        //reset();
+        //var obj = Package.encode(Package.TYPE_HANDSHAKE, Protocol.strencode(JSON.stringify(handshakeBuffer)));
+        //send(obj);
     };
     var onmessage = function(event) {
-      //Log("pomelo-client.js connect() back onmessage() data:" + JSON.stringify(Package.decode(event.data)));
-      //processPackage(Package.decode(event.data), cb);
+        Log("pomelo-client.js websocket callback onmessage() typeof event.data:" + (typeof event.data));
+        Log("pomelo-client.js websocket callback onmessage() event.data:" + event.data);
+        processPackage(Package.decode(event.data), cb);
 
-      Log("pomelo-client.js connect() back onmessage() data:" + event.data);
-      processMessage(pomelo, JSON.parse(event.data));
-      // new package arrived, update the heartbeat timeout
-      if(heartbeatTimeout) {
-        nextHeartbeatTimeout = Date.now() + heartbeatTimeout;
-      }
+        // new package arrived, update the heartbeat timeout
+        //if(heartbeatTimeout) {
+        //  nextHeartbeatTimeout = Date.now() + heartbeatTimeout;
+        //}
     };
     var onerror = function(event) {
-      Log("pomelo-client.js connect() back onerror()");
-      pomelo.emit('io-error', event);
-      console.error('socket error: ', event);
+        Log("pomelo-client.js websocket callback onerror()");
+        pomelo.emit('io-error', event);
+        console.error('socket error: ', event);
     };
     var onclose = function(event) {
-      Log("pomelo-client.js connect() back onclose()");
-      pomelo.emit('close',event);
-      pomelo.emit('disconnect', event);
-      console.error('socket close: ', event);
-	  pomelo.disconnect();
-      if(!!params.reconnect && reconnectAttempts < maxReconnectAttempts) {
-        reconnect = true;
-        reconnectAttempts++;
-        reconncetTimer = setTimeout(function() {
-          connect(params, reconnectUrl, cb);
-        }, reconnectionDelay);
-        reconnectionDelay *= 2;
-      }
+        Log("pomelo-client.js websocket callback onclose() event:" + event);
+        pomelo.emit('close',event);
+        pomelo.emit('disconnect', event);
+        pomelo.disconnect();
+        //if(!!params.reconnect && reconnectAttempts < maxReconnectAttempts) {
+        //  reconnect = true;
+        //  reconnectAttempts++;
+        //  reconncetTimer = setTimeout(function() {
+        //    connect(params, reconnectUrl, cb);
+        //  }, reconnectionDelay);
+        //  reconnectionDelay *= 2;
+        //}
     };
     socket = new WebSocket(url);
-    //socket.binaryType = 'arraybuffer';
+    socket.binaryType = 'arraybuffer';
     socket.onopen = onopen;
     socket.onmessage = onmessage;
     socket.onerror = onerror;
     socket.onclose = onclose;
+  };
+
+
+  pomelo.init = function(params, cb) {
+    Log("pomelo-client.init() BEGIN");
+    initCallback = cb;
+    var host = params.host;
+    var port = params.port;
+
+    encode = params.encode || defaultEncode;
+    decode = params.decode || defaultDecode;
+
+    var url = 'ws://' + host;
+    if(port) {
+      url +=  ':' + port;
+    }
+
+    handshakeBuffer.user = params.user;
+    if(params.encrypt) {
+      useCrypto = true;
+      rsa.generate(1024, "10001");
+      var data = {
+        rsa_n: rsa.n.toString(16),
+        rsa_e: rsa.e
+      }
+      handshakeBuffer.sys.rsa = data;
+    }
+    handshakeCallback = params.handshakeCallback;
+    connect(params, url, cb);
   };
 
   pomelo.disconnect = function() {
@@ -240,18 +249,8 @@
     }
   };
 
-  var reset = function() {
-    reconnect = false;
-    reconnectionDelay = 1000 * 5;
-    reconnectAttempts = 0;
-	if(reconncetTimer)
-	{
-	   clearTimeout(reconncetTimer);
-       reconncetTimer=null;	   
-	}    
-  };
 
-  pomelo.request = function(route, msg, cb) {
+  pomelo.request = function(route,  messageId, msg, cb) {
     if(arguments.length === 2 && typeof msg === 'function') {
       cb = msg;
       msg = {};
@@ -264,18 +263,24 @@
     }
 
     reqId++;
-    sendMessage(reqId, route, msg);
+    sendMessage(reqId, route,  messageId, msg);
 
     callbacks[reqId] = cb;
     routeMap[reqId] = route;
   };
 
-  pomelo.notify = function(route, msg) {
+  pomelo.notify = function(route, messageId, msg) {
     msg = msg || {};
-    sendMessage(0, route, msg);
+    sendMessage(0, route, messageId, msg);
   };
 
-  var sendMessage = function(reqId, route, msg) {
+  /**
+   *
+   * @param reqId 消息号
+   * @param route 路由
+   * @param msg is a protobuf object
+   */
+  var sendMessage = function(reqId, route,  messageId, msg) {
     //if(useCrypto) {
     //  msg = JSON.stringify(msg);
     //  var sig = rsa.signString(msg, "sha256");
@@ -283,32 +288,28 @@
     //  msg = JSON.parse(msg);
     //  msg['__crypto__'] = sig;
     //}
-
+    msg = msg.encodeHex();
     //encode msg
-    //if(encode) {
-    //  msg = encode(reqId, route, msg);
-    //}
-
-    Log("pomelo-client.js sendMessage() msg:" + JSON.stringify(msg));
-    //var packet = Package.encode(Package.TYPE_DATA, msg);
-    //send(packet);/////////////临时
-
-    //test: send a text
-    var newmsg = {id:reqId, route:route, body:msg};
-    sendText(JSON.stringify(newmsg));
+    if(encode) {
+        msg = encode(reqId, route,  messageId, msg);
+    }
+    Log("pomelo-client.js sendMessage() after defaultEncode() typeof msg:" + (typeof msg));
+    Log("pomelo-client.js sendMessage() after defaultEncode() msg:" + msg);
+    var packet = Package.encode(Package.TYPE_DATA, msg);
+    send(packet);
   };
 
-  var sendText = function (text) {
-    if(socket){
-        socket.send(text);
-    }
-  }
 
   var send = function(packet) {
     if(socket){
-      socket.send(packet.buffer);
+        Log("pomelo-client.js send() typeof packet.buffer:" + (typeof packet.buffer));
+        Log("pomelo-client.js send() packet.buffer:" + packet.buffer);
+        socket.send(packet.buffer);
     }
   };
+
+
+
 
   var handler = {};
 
@@ -370,11 +371,28 @@
   };
 
   var onData = function(data) {
-    var msg = data;
-    if(decode) {
-      msg = decode(msg);
-    }
-    processMessage(pomelo, msg);
+      var msg = data;
+      Log("pemelo-client.js onData() typeof data:" + (typeof data));
+      Log("pemelo-client.js onData() data:" + data);
+      if(decode) {
+          msg = decode(msg);
+      }
+
+      if(!msg.id) {
+          // server push message
+          pomelo.emit(msg.route, msg.body);
+          return;
+      }
+
+      //if have a id then find the callback function with the request
+      var cb = callbacks[msg.id];
+      delete callbacks[msg.id];
+      if(typeof cb !== 'function') {
+        return;
+      }
+      Log("pomelo-client.js onData() msg.body:" + JSON.stringify(msg.body));
+      cb(msg.body);
+      return;
   };
 
   var onKick = function(data) {
@@ -388,20 +406,26 @@
   handlers[Package.TYPE_KICK] = onKick;
 
   var processPackage = function(msgs) {
+    Log("pomelo-client.js processPackage() typeof msgs:" + (typeof msgs));
+    Log("pomelo-client.js processPackage() msgs:" + msgs);
     if(Array.isArray(msgs)) {
       for(var i=0; i<msgs.length; i++) {
           var msg = msgs[i];
-          var handlers_msg= handlers[msg.type];
-          if (handlers_msg) handlers_msg(msg.body);
+        Log("pomelo-client.js processPackage() 222222222 msgs.type:" + msg.type);
+          var handlers_msg = handlers[msg.type];
+          if (handlers_msg){
+              handlers_msg(msg.body);
+          }
           else  
 		  {
 			  sendEvent("disconnect",3);
 		  }
       }
     } else {
+      Log("pomelo-client.js processPackage() 111111111 msgs.type:" + msgs.type);
        var handlers_msg= handlers[msgs.type];
        if (handlers_msg){
-         handlers_msg(msgs.body);
+          handlers_msg(msgs.body);
        }
        else
 	   {
@@ -410,62 +434,8 @@
     }
   };
 
-  var processMessage = function(pomelo, msg) {
-    if(!msg.id) {
-      // server push message
-      pomelo.emit(msg.route, msg.body);
-      return;
-    }
 
-    //if have a id then find the callback function with the request
-    var cb = callbacks[msg.id];
 
-    delete callbacks[msg.id];
-    if(typeof cb !== 'function') {
-      return;
-    }
-
-    cb(msg.body);
-    return;
-  };
-
-  var processMessageBatch = function(pomelo, msgs) {
-    for(var i=0, l=msgs.length; i<l; i++) {
-      processMessage(pomelo, msgs[i]);
-    }
-  };
-
-  var deCompose = function(msg) {
-    var route = msg.route;
-
-    //Decompose route from dict
-    if(msg.compressRoute) {
-      if(!abbrs[route]){
-        return {};
-      }
-
-      route = msg.route = abbrs[route];
-    }
-    if(protobuf && serverProtos[route]) {
-      return protobuf.decodeStr(route, msg.body);
-    } else if(decodeIO_decoder && decodeIO_decoder.lookup(route)) {
-      return decodeIO_decoder.build(route).decode(msg.body);
-    } else {
-      //return JSON.parse(Protocol.strdecode(msg.body));
-      var jsonData=null;
-      try {
-        jsonData = JSON.parse(Protocol.strdecode(msg.body));
-        //Log('--- jsonData:'+JSON.stringify(jsonData));
-        return jsonData;
-      }
-      catch (e)
-      {
-        //Log('exception: jsonData');
-      }
-    }
-
-    return msg;
-  };
 
   var handshakeInit = function(data) {
     if(data.sys && data.sys.heartbeat) {

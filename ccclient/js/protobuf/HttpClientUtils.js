@@ -69,8 +69,9 @@ jsclient.HttpClientUtils = {
 
     _sendProtobufMessageToServer: function(url, message, callback, callbackTarget){
         var data = message.encodeHex();
+        Log("send typeof:" + (typeof data));
         Log("send data:" + data);
-
+        return;
         var xhr = new XMLHttpRequest();
 
         var sendUrl = jsclient.Config.getServerWebUrl() + url + "?t=" + new Date().getTime();

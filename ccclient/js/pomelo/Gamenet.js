@@ -76,28 +76,28 @@ function GameNet() {
 		pomelo.disconnect();
 	}
     //* 发送网络请求 *
-    this.request = function( type, msg, cb ) {
-		Log("gamenet.js: GameNet().request() ================================================ START");
-        Log("type: " + type);
-        Log("msg : " + JSON.stringify(msg));
+    this.request = function( route, messageId, msg, cb ) {
+		Log("gamenet.js: request() START");
+        Log("gamenet.js: request() route: " + route);
+        Log("gamenet.js: request() msg : " + JSON.stringify(msg));
 		//Log("cb : " + cb);
 	    try {
 			reqStart=Date.now();
 		    Log("gamenet.js: GameNet().request(): arguments.length:" + arguments.length);
 			if (2 == arguments.length) {
-				pomelo.notify(type, msg); /* "通知"不需要服务器给回馈 */
+				pomelo.notify(route,messageId, msg); /* "通知"不需要服务器给回馈 */
 				lastTableCmd = null;
-				if("pkroom.handler.tableMsg"==type) {
+				if("pkroom.handler.tableMsg"==route) {
 					//Log("gamenet.js: GameNet().request(): set lastTableCmd= " + msg.cmd);
 					lastTableCmd=msg.cmd;
 				}
 			} else {
 				Log("gamenet.js: GameNet().request(): pomelo.request()");
-				pomelo.request(type, msg, function(rtn) { /* "请求"需要服务器给回馈 */
+				pomelo.request(route,  messageId, msg, function(rtn) { /* "请求"需要服务器给回馈 */
 					Log("gamenet.js: GameNet().request(): Anonymous func() called");
 					ComputePingPong();
 				    if(cc.sys.OS_WINDOWS==cc.sys.os){
-					    Log(type + " # " + (Date.now()-reqStart) + " " + JSON.stringify(rtn));
+					    Log(route + " # " + (Date.now()-reqStart) + " " + JSON.stringify(rtn));
 				    }
 				    cb(rtn);
 			   });

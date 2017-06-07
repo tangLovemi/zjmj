@@ -40,8 +40,8 @@ message CLoginRequest{
  * LOGIN_LOGIN_RESPONSE = 1001;
  */
 message SLoginResponse{
-	required string sessionId = 2;  // sessionId,用于后期验证
-	optional string uid = 3;  // 用户名
-	optional GamePlatform commPlatform = 4;
+	optional GamePlatform platform = 1; // 平台
+	optional GameId gameId = 2;		//
+	optional string uid = 4;  // 用户名
 }
 
