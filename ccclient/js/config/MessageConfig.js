@@ -13,9 +13,10 @@ jsclient.getMessageInfoByMessageId = function (messageId) {
     if(!messageId){
         return null;
     }
-    for(var info in jsclient.MessageConfig){
-        if(messageId == info.messageId){
-            return info;
+    for(var i = 0; i < jsclient.MessageConfig.length; i++){
+        if(messageId == jsclient.MessageConfig[i].messageId){
+            Log("MessageConfig.js getMessageInfoByMessageId() messageId 111111111111111111");
+            return jsclient.MessageConfig[i];
         }
     }
 }

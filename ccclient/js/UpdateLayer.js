@@ -41,6 +41,7 @@
                 }
             },
             testBtn1:{
+                _visible:true,
                 _layout: [[0.2, 0.2], [0.5, 0.5], [-1.8, 0]],
                 _click:function(){
                     testConnect();

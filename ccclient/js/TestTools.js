@@ -195,9 +195,11 @@ function testSendProtobufByWebSocket(){
     loginRequest.platform = platform;
     loginRequest.gameId = jsclient.Config.getGameId();
     loginRequest.uid = "10010";
+    Log("TestTools.js testSendText() loginRequest:" + JSON.stringify(loginRequest));
 
     jsclient.gamenet.request(
         jsclient.RouteConfig.URL_LOGIN,
+        jsclient.MessageIdConfig.Login_Request,
         loginRequest,
         function(rtn) {
             Log("TestTools.js testSendText() rtn:" + JSON.stringify(rtn));
