@@ -1,0 +1,110 @@
+{
+    "players": {
+        "101881": {
+            "delRoom": 0
+        },
+        "101882": {
+            "delRoom": 0
+        },
+        "101886": {
+            "delRoom": 0
+        },
+        "101921": {
+            "delRoom": 0
+        }
+    },
+    "tData": {
+        "gameid": "ahmj",
+        "tState": 3,
+        "initCoin": 0,
+        "roundNum": 4,
+        "roundAll": 4,
+        "uids": [
+            101921,
+            101881,
+            101882,
+            101886
+        ],
+        "owner": 101921,
+        "cardNext": 53,
+        "winner": -2,
+        "curPlayer": 0,
+        "zhuang": 0,
+        "lastPutPlayer": -1,
+        "putType": 0,
+        "lastPut": -1,
+        "tableid": "200531",
+        "delEnd": 0,
+        "firstDel": -1,
+        "maimaCard": [],
+        "mode": 2,
+        "noBigWin": true,
+        "cfgName:": "anqing",
+        "cfgUserCntPerTbl": 4,
+        "cfgWithFeng": true,
+        "cfgWithZhong": true,
+        "cfgWithFaBai": true,
+        "cfgWithYaoJiu": true,
+        "cfgWithHui": false,
+        "cfgHuiCard": 0,
+        "cfgWithJiaoPao": false,
+        "cfgWithJiaoNao": false,
+        "cfgWithJiaoPiao": false,
+        "cfgCanHuHui": false,
+        "cfgRemainedCardCnt": 0,
+        "cfgBanGangCardCnt": 1,
+        "cfgBanPengCardCnt": 0,
+        "cfgBanChiCardCnt": 0,
+        "cfgCanChi": true,
+        "cfgCanPeng": true,
+        "cfgCanMGang": true,
+        "cfgCanAGang": true,
+        "calcGangWithNoOneWin": false,
+        "cfgCanEatHu": true,
+        "cfgCalcAllGang": false,
+        "cfgCalcDianGang": false,
+        "cfgCanHu7": true,
+        "cfgCanHu13Lan": true,
+        "cfgCanHu13Yao": true,
+        "cfgMultiplePao": true,
+        "cfgWithGangPao": true,
+        "cfgCanRobGang": true,
+        "cfgNeedCheckBao": true,
+        "cfgPerAGang": 2,
+        "cfgPerMGang": 1,
+        "cfgPerDGang": 1,
+        "cfgPerGangKaiHua": 0,
+        "cfgPerRobGang": 0,
+        "cfgBuhuaCards": [
+            61,
+            71,
+            81,
+            91
+        ],
+        "cfgNextZhuangOfHuangzhuangType": 1,
+        "cfgNextZhuangOfZhuangjiaWinType": 1,
+        "cfgNextZhuangOfXianjiaWinType": 3,
+        "cfgNextZhuangOfYiPaoDuoXiang": 4,
+        "cfgScoreBase": 1,
+        "cfgScoreMultiple": 1,
+        "cfgGuoPengNoPeng": true,
+        "cfgGuoGangNoGang": false,
+        "cfgMaiMa": 0,
+        "cfgPerMaiMaScore": 0,
+        "cfgMaiMaCards": [],
+        "cfgIsSlidePutCard": true,
+        "cfgNeedSortChiCard": false,
+        "isNeedCharge": true,
+        "cfgFanpai": false,
+        "cfgCanFengHu": true,
+        "cfgFanpaiTian": 1,
+        "cfgFanpaiDi": 1,
+        "roundName": "round4",
+        "myStartTime": "2017-06-14 16:05:42",
+        "maimaScore": 0,
+        "fanpaiCardPopCount": 0
+    },
+    "nouid": [
+        101882
+    ]
+}

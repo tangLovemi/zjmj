@@ -1,0 +1,8 @@
+{
+    "cmd": "MJGang",
+    "card": 12,
+    "eatFlag": 4,
+    "__route__": "pkroom.handler.tableMsg",
+    "gang": 3,
+    "uid": 101882
+}
