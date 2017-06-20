@@ -53,7 +53,8 @@
                 _click:function(){
                     //testLogin();
                     //testSendBinary();
-                    testSendProtobufByWebSocket();
+                    //testSendProtobufByWebSocket();
+                    testSendProtobufArrayTestByWebSocket();
                 }
             },
             testBtn3:{

@@ -191,18 +191,40 @@ function testProtobuf(){
 
 function testSendProtobufByWebSocket(){
     var platform = jsclient.ProtoBufUtils.getEnumMessage(jsclient.ProtobufConfig.LoginProtocol, "GamePlatform").PLATFORM_WINDOWS;
-    var loginRequest = jsclient.ProtoBufUtils.newProtocolMessage(jsclient.ProtobufConfig.LoginProtocol, "CLoginRequest");
-    loginRequest.platform = platform;
-    loginRequest.gameId = jsclient.Config.getGameId();
-    loginRequest.uid = "10010";
-    Log("TestTools.js testSendProtobufByWebSocket() loginRequest:" + JSON.stringify(loginRequest));
+    var request = jsclient.ProtoBufUtils.newProtocolMessage(jsclient.ProtobufConfig.LoginProtocol, "CLoginRequest");
+    request.platform = platform;
+    request.gameId = jsclient.Config.getGameId();
+    request.uid = "10010";
+    Log("TestTools.js testSendProtobufByWebSocket() loginRequest:" + JSON.stringify(request));
 
     jsclient.gamenet.request(
         jsclient.RouteConfig.URL_LOGIN,
         jsclient.MessageIdConfig.Login_Request,
-        loginRequest,
+        request,
         function(rtn) {
-            Log("TestTools.js testSendText() rtn:" + JSON.stringify(rtn));
+            Log("TestTools.js testSendProtobufByWebSocket() rtn:" + JSON.stringify(rtn));
+        }
+    );
+}
+
+function testSendProtobufArrayTestByWebSocket(){
+    var platform = jsclient.ProtoBufUtils.getEnumMessage(jsclient.ProtobufConfig.LoginProtocol, "GamePlatform").PLATFORM_WINDOWS;
+    var request = jsclient.ProtoBufUtils.newProtocolMessage(jsclient.ProtobufConfig.LoginProtocol, "CArrayTestRequest");
+    request.cards = [1,2,3,6,6,6,11,12,13,21,22,23,29];
+    request.name = "mjhand";
+    Log("TestTools.js testSendProtobufArrayTestByWebSocket() request:" + JSON.stringify(request));
+
+    jsclient.gamenet.request(
+        jsclient.RouteConfig.URL_ARRAY_TEST,
+        jsclient.MessageIdConfig.ArrayTest_Request,
+        request,
+        function(rtn) {
+            Log("TestTools.js testSendProtobufArrayTestByWebSocket() rtn:" + JSON.stringify(rtn));
+            if(rtn){
+                if(rtn.cards && rtn.cards.length > 0){
+                    Log("TestTools.js testSendProtobufArrayTestByWebSocket rtn.cards[3]:" + rtn.cards[3]);
+                }
+            }
         }
     );
 }

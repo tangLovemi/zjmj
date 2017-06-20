@@ -2,11 +2,16 @@
 jsclient.MessageIdConfig = {
     Login_Request:1001,
     Login_Response:1002,
+    ArrayTest_Request:1003,
+    ArrayTest_Response:1004,
 };
 
 jsclient.MessageConfig = [
     {messageId:jsclient.MessageIdConfig.Login_Request, routeName:jsclient.RouteConfig.URL_LOGIN, protoName:jsclient.ProtobufConfig.LoginProtocol, messageName:"CLoginRequest"},
     {messageId:jsclient.MessageIdConfig.Login_Response, routeName:jsclient.RouteConfig.URL_LOGIN, protoName:jsclient.ProtobufConfig.LoginProtocol, messageName:"SLoginResponse"},
+
+    {messageId:jsclient.MessageIdConfig.ArrayTest_Request, routeName:jsclient.RouteConfig.URL_ARRAY_TEST, protoName:jsclient.ProtobufConfig.LoginProtocol, messageName:"CArrayTestRequest"},
+    {messageId:jsclient.MessageIdConfig.ArrayTest_Response, routeName:jsclient.RouteConfig.URL_ARRAY_TEST, protoName:jsclient.ProtobufConfig.LoginProtocol, messageName:"SArrayTestRequest"},
 ]
 
 jsclient.getMessageInfoByMessageId = function (messageId) {
