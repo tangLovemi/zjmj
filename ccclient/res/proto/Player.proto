@@ -1,0 +1,105 @@
+syntax = "proto2";
+
+package com.sumi.proto;
+
+//玩家地理位置信息
+message PlayerInfo_geogData{
+    optional string latitude = 1; //维度
+    optional string longitude = 2; //精度
+}
+
+message PlayerInfo_app{
+    optional string appid = 1; //	com.coolgamebox.zjmj
+    optional string os	= 2; //	Android
+}
+
+//存储uid 和 count
+message PlayerInfo_From_Count{
+    optional int32 uid = 1;
+    optional int32 count = 2;
+}
+
+//玩家个人信息
+message PlayerInfo{
+    optional int32 _id = 1;
+    optional int32 uid = 2;
+    optional int coin = 3;
+    optional int money = 4;
+    optional string appid = 5;
+    optional int32 playNum = 6;
+    optional string face = 7;
+    optional string members = 8;
+    optional string sendTime = 9;
+    optional string name = 10;
+    optional string appEnd = 11;
+    optional string resVersion = 12;
+    optional string remoteIP = 13;
+    optional string uKey = 14;
+    optional int32 sid = 15;
+    optional string fid = 16;
+    optional string did = 17;
+    optional PlayerInfo_geogData geogData = 18;//需要处理
+    optional string email = 19;
+    optional string openid = 20;
+    optional string nickname = 21;
+    optional int32 sex = 22;
+    optional string language = 23;
+    optional string city = 24;
+    optional string province = 25;
+    optional string country = 26;
+    optional string headimgurl = 27;
+    optional string privilege = 28;
+    optional string unionid = 29;
+    optional string lType = 30;
+    optional PlayerInfo_app app = 31;//需要处理
+    optional string os = 32;
+    optional string __route__ = 33;
+}
+
+message PlayerTableData{
+    optional PlayerInfo info = 1;//需要处理，得到数据后需要统一转化
+    optional int32 mjState = 2;// 状态
+    repeated int32 mjpeng = 3;//碰牌
+    repeated int32 mjgang0 = 4;//明杠牌，包括吃明杠、摸明杠（先碰后自己摸一张形成）
+    repeated int32 mjgang1 = 5;//暗杠
+    repeated int32 mjchi = 6;//吃牌
+    optional bool onLine = 7;//是否在线
+    optional int32 delRoom = 8;// 发起解散房间的user的UID
+    optional int32 winall = 9;//算总分
+    optional string pengFrom = 10;//记录了从某人那里碰了几次；需要处理：json串转成object，举例：{"100001":2, "100002":1}，从100001碰了2次，从100002碰了1次
+    optional string chiFrom = 11;//同pengFrom
+    optional string gangFrom = 12;//同pengFrom
+    optional string gang0uid = 13;//记录吃明杠信息：从谁哪里吃的这个明杠，key:牌号  value：玩家uid，举例：{"5":100001, "11":100002}，明杠5是从100001吃的，明杠11是从100002吃的
+    optional string moMingGangPengFromUid = 14;//记录摸明杠当初是从谁那里碰的, key:牌号  value：玩家uid
+    optional string pengFromUid = 15;//记录碰牌来自谁, key:牌号  value：玩家uid
+    optional int32 lianzhuang = 16;//连庄数
+    repeated int32 minggangMo = 17;//摸明杠
+    repeated int32 minggangDianUid = 18;//push所有吃明杠的uid
+    repeated int32 passGang = 19; //过杠
+    repeated int32 buHuaCount = 20;//补花次数
+    repeated int32 buHuaCards = 21;//补过花的牌
+    optional int32 baoPaiType = 22;//包牌类型
+    optional int32 jiaoPaoScore = 23;//叫跑分
+    optional int32 jiaoNaoScore = 24;//叫闹分
+    optional int32 jiaoPiaoScore = 25;//叫飘分
+    optional int32 zhuangCount = 26;//用于叫跑，记录玩家坐庄次数，换庄后不重置，直至所有玩家都坐过庄重新叫跑后重置
+    repeated int32 passPengCards = 27;//碰过的牌，用于过碰不碰，轮到玩家打牌时重置
+    optional int32 winTotalCount = 28;//总胡次数，用于总结算统计
+    optional int32 mingGangTotalCount = 29;//总明杠次数，用于总结算统计
+    optional int32 anGangTotalCount = 30;//总暗杠次数，用于总结算统计
+    optional int32 dianGangTotalCount = 31;//总点杠次数，用于总结算统计
+    optional int32 gangKaiWinTotalCount = 32;//总杠开花次数，用于总结算统计
+    optional int32 zhongMaTotalCount = 33;//总中马次数，用于总结算统计
+    optional int32 buhuaTotalCount = 34;//总补花次数，用于总结算统计
+    optional int32 dianpaoTotalCount = 35;//总点炮次数，用于总结算统计
+    repeated int32 mjhand = 36;//手牌
+    optional int32 eatFlag = 37;//标志：胡8 杠4 碰2 吃1
+    optional bool haveBao = 38;//和别的玩家之间存在包关系，true:存在,false:不存在.(安庆专用)
+}
+
+
+
+
+
+
+
