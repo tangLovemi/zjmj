@@ -54,7 +54,8 @@
                     //testLogin();
                     //testSendBinary();
                     //testSendProtobufByWebSocket();
-                    testSendProtobufArrayTestByWebSocket();
+                    //testSendProtobufArrayTestByWebSocket();
+                    testSendProtobufPlayerInfoByWebSocket();
                 }
             },
             testBtn3:{

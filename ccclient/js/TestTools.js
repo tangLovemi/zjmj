@@ -230,6 +230,73 @@ function testSendProtobufArrayTestByWebSocket(){
 }
 
 
+function testSendProtobufPlayerInfoByWebSocket(){
+    Log("----0");
+    var PlayerInfoMsg = jsclient.ProtoBufUtils.newProtocolMessage(jsclient.ProtobufConfig.PlayerProtocol, "PlayerInfo");
+    Log("----1");
+    var PlayerInfo_geogDataMsg = jsclient.ProtoBufUtils.newProtocolMessage(jsclient.ProtobufConfig.PlayerProtocol, "PlayerInfo_geogData");
+    Log("----2");
+    PlayerInfo_geogDataMsg.latitude = "65.3";
+    PlayerInfo_geogDataMsg.longitude = "64.3";
+    var PlayerInfo_appMsg = jsclient.ProtoBufUtils.newProtocolMessage(jsclient.ProtobufConfig.PlayerProtocol, "PlayerInfo_app");
+    Log("----3");
+    PlayerInfo_appMsg.appid = "com.coolgamebox.zjmj";
+    PlayerInfo_appMsg.os = "Android";
+
+    PlayerInfoMsg._id = 10001;
+    PlayerInfoMsg.uid = 100001;
+    PlayerInfoMsg.coin = 9;
+    PlayerInfoMsg.money = 20;
+    PlayerInfoMsg.appid = "com.coolgamebox.zjmj";
+    PlayerInfoMsg.playNum = 3;
+    PlayerInfoMsg.geogData = PlayerInfo_geogDataMsg;
+    PlayerInfoMsg.app = PlayerInfo_appMsg;
+
+    jsclient.gamenet.request(
+        jsclient.RouteConfig.URL_PLAYER_IFNO,
+        jsclient.MessageIdConfig.PlayerInfo_Request,
+        request,
+        function(rtn) {
+            Log("TestTools.js testSendProtobufPlayerInfoByWebSocket() rtn:" + JSON.stringify(rtn));
+        }
+    );
+
+
+    //optional int32 _id = 1;
+    //optional int32 uid = 2;
+    //optional int coin = 3;
+    //optional int money = 4;
+    //optional string appid = 5;
+    //optional int32 playNum = 6;
+    //optional string face = 7;
+    //optional string members = 8;
+    //optional string sendTime = 9;
+    //optional string name = 10;
+    //optional string appEnd = 11;
+    //optional string resVersion = 12;
+    //optional string remoteIP = 13;
+    //optional string uKey = 14;
+    //optional int32 sid = 15;
+    //optional string fid = 16;
+    //optional string did = 17;
+    //optional PlayerInfo_geogData geogData = 18;//需要处理
+    //optional string email = 19;
+    //optional string openid = 20;
+    //optional string nickname = 21;
+    //optional int32 sex = 22;
+    //optional string language = 23;
+    //optional string city = 24;
+    //optional string province = 25;
+    //optional string country = 26;
+    //optional string headimgurl = 27;
+    //optional string privilege = 28;
+    //optional string unionid = 29;
+    //optional string lType = 30;
+    //optional PlayerInfo_app app = 31;//需要处理
+    //optional string os = 32;
+    //optional string __route__ = 33;
+}
+
 
 
 

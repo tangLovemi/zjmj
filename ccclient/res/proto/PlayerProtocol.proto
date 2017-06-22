@@ -13,18 +13,13 @@ message PlayerInfo_app{
     optional string os	= 2; //	Android
 }
 
-//存储uid 和 count
-message PlayerInfo_From_Count{
-    optional int32 uid = 1;
-    optional int32 count = 2;
-}
 
 //玩家个人信息
 message PlayerInfo{
     optional int32 _id = 1;
     optional int32 uid = 2;
-    optional int coin = 3;
-    optional int money = 4;
+    optional int32 coin = 3;
+    optional int32 money = 4;
     optional string appid = 5;
     optional int32 playNum = 6;
     optional string face = 7;

@@ -5,7 +5,8 @@ jsclient.PROTO_GAME_PACKAGE_NAME = "com." + jsclient.Config.DOMAIN_NAME + ".prot
 jsclient.PROTO_SERVER_PACKAGE_NAME = "com." + jsclient.Config.DOMAIN_NAME + ".core.server.proto";
 
 jsclient.ProtobufConfig = {
-    LoginProtocol:"LoginProtocol"
+    LoginProtocol:"LoginProtocol",
+    PlayerProtocol:"PlayerProtocol"
 };
 
 jsclient.PROTO_SERVER_PACKAGE_PROTOCOLS = [];

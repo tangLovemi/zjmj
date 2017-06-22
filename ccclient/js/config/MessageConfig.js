@@ -4,6 +4,8 @@ jsclient.MessageIdConfig = {
     Login_Response:1002,
     ArrayTest_Request:1003,
     ArrayTest_Response:1004,
+
+    PlayerInfo_Request:1005,
 };
 
 jsclient.MessageConfig = [
@@ -12,6 +14,8 @@ jsclient.MessageConfig = [
 
     {messageId:jsclient.MessageIdConfig.ArrayTest_Request, routeName:jsclient.RouteConfig.URL_ARRAY_TEST, protoName:jsclient.ProtobufConfig.LoginProtocol, messageName:"CArrayTestRequest"},
     {messageId:jsclient.MessageIdConfig.ArrayTest_Response, routeName:jsclient.RouteConfig.URL_ARRAY_TEST, protoName:jsclient.ProtobufConfig.LoginProtocol, messageName:"SArrayTestRequest"},
+
+    {messageId:jsclient.MessageIdConfig.PlayerInfo_Request, routeName:jsclient.RouteConfig.URL_PLAYER_IFNO, protoName:jsclient.ProtobufConfig.PlayerProtocol, messageName:"PlayerInfo"},
 ]
 
 jsclient.getMessageInfoByMessageId = function (messageId) {

@@ -25,7 +25,7 @@ jsclient.ProtoBufUtils = (function () {
     };
 
     ProtoBufUtils.getProtocolFromFile = function (key) {
-
+        Log("ProtoBufUtils.js getProtocolFromFile() key:" + key);
         if (!ProtoBufUtils.protofiles[key]) {
             var file = jsclient.PROTO_DIR_NAME + jsclient.ProtobufConfig[key] + ".proto";
             var packageName = jsclient.PROTO_GAME_PACKAGE_NAME;
